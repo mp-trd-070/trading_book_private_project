@@ -1,11 +1,71 @@
 \documentclass[ngerman,12pt,a4paper]{book}
 \usepackage[T1]{fontenc}
 \usepackage{babel}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[most]{tcolorbox}
+
+\usepackage[dvipsnames]{xcolor}
+
+
+\definecolor{quotegrey}{gray}{0.95}
+
+% 2. Improved TraderQuote environment
+\newtcolorbox{traderquote}[1][]{%
+	colback=quotegrey,
+	colframe=gray!50,
+	arc=5pt,
+	boxrule=0.5pt,
+	sidebyside,
+	sidebyside align=center,
+	lefthand width=2.5cm, % Slightly wider to prevent clipping
+	lower separated=false,
+	#1 % Allows for passing extra arguments if needed
+}
+
+\definecolor{lightskyblue}{RGB}{235, 245, 255}
+
+% Define the warstory environment
+\newtcolorbox{warstory}[2]{
+	colback=lightskyblue,         % Background color
+	colframe=black,          % Border color
+	fonttitle=\bfseries\large,    % Title styling
+	title=#1,                     % The first argument is the title
+	sharp corners,                % Optional: removes rounded corners
+	boxrule=1pt,                  % Border thickness
+	enhanced,
+	before upper={
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{#2} % The second argument is the image file
+		\end{center}
+		\medskip
+	}
+}
+
+
+
+
 \begin{document}
+
+\section{Einleitung oder einige grundlegende Beobachtungen}
+\subsection{Händler sind keine Roboter}
+Das wichtigste über Händler vor weg: Sie sind Menschen, mit allen Vor- und Nachteilen. 
+
 
 \section{Trader Management}
 \subsection{Ein schlechter Trade kommt selten allein}
 Immer wenn man einen schlechten Trade hatte, kommt noch ein zweiter und ein dritter um die Ecke. Es liegt einfach daran, dass man höchstem körperlichen Stress ausgesetzt ist und nicht vernünftig handeln kann. Schwierige Situationen haben dann eine deutlich schlechtere xPNL. 
+	
+\begin{traderquote}
+	% Left side: The image
+	\includegraphics[width=2cm]{traderface.jpg} 
+	\tcblower
+	% Right side: The quote	
+	The game of speculation is the most uniformly fascinating game in the world. But it is not a game for the stupid, the mentally lazy, the person of inferior emotional balance, or the adventurer who thinks he can get rich quickly. \\
+	
+	\textbf{\textsc{Jesse Livermore}}
+\end{traderquote}
 
 \section{Trade Analysis}
 \subsection{PreTrade}
@@ -17,8 +77,30 @@ Trades die ein gutes Ergebnis haben, können trotzdem schlecht gewesen sein. Tra
 \subsection{Loss on Top}
 Man muss sich die Frage stellen, wie viel Loss man ursprünglich bereit war in dem Trade einzuzahlen und wie viel es dann am Ende tatsächlich geworden ist. Das was man zusätzlich zum eingeplanten Loss eingezahlt hat, ist der Loss on Top.
 
+\subsection{Man zahlt Profit aus schlechten Trades zehnfach wieder zurück}
+Wenn man mit einem schlechten Trade Geld verdient, gewöhnt man sich schlechtes Handelsverhalten an. Angewöhnen durch Gewinne geht leider viel schneller als Abgewöhnen durch Verluste. Gleichzeitig steigt das Vertrauen in das Verhalten mit jedem Profit an, wodurch die Kosten des Abgewöhnens immer größer werden. 
 
 \section{Position Management}
+\subsection{Fremde Trades}
+%Ein typishces Beispiel war die Vollzuteilung in Veganz, wo ich dann 
+Häufig macht man Trades bloß aus dem Grund, das jemand einem zu dem Trade geraten hat (Trust me, Bro). Trades die man auf fremde Ideen hin macht, sorgen dafür, dass man nicht die nötige Überzeugung hat, um den Trade auch gegen mentale Schwierigkeiten durchzuziehen. Je schwerer der fremde Trade, desto weniger wahrscheinlich ein Erfolg dabei. 
+
+\begin{traderquote}
+	% Left side: The image
+	\includegraphics[width=2cm]{michael_marcus.jpg} 
+	\tcblower
+	% Right side: The quote	
+	If it comes down to ``I'm in it because Bruce is in it`` then you are not going to have the courage to stick with it. So you might as well not be in it in the first place. \\
+	
+	\textbf{\textsc{Michael Marcus} in Market Wizards}
+\end{traderquote}
+
+
+\begin{warstory}{Wenn die Meute die Size macht}{veganz_ipo.jpg}
+	In meiner Zeit bei XYZ haben wir immer IPOs in Deutschland gehandelt. Da man bei den guten IPOs immer zu wenig Stücke bekam (siehe Zuteilungsfluch), wurde vom Plenum des Handelssaals beschlossen, dass wir bei dem IPO zu Veganz besonders viele Orders einspielen sollten, um auf jeden Fall einige Stücke zu bekommen. Da ich ein Junior war, wurde mir die Betreuung der Position übertragen, ohne mich jedoch zu fragen, welche Meinung\footnote{Ich bekam die Verantwortung für die Position bloß, weil ich zu der Zeit eine karnivore Diät befolgte und fast ausschließlich Fleisch und gebratenes Gemüse aß. Händler haben einen feinen Sinn für Humor, sodass in unserem Handelsteam die Verantwortung für die Aktie von Borussia Dortmund an einen glühenden Anhänger des FC Schalke übertragen wurde.} ich zu dem IPO hatte. Ich sollte also bloß die Position verwalten und am Ende die PnL auf mein Buch nehmen. Am Tag der Zuteilung bekamen wir dann vollständige Zuteilung. Ich saß also auf einem riesigen Berg Stücken in Veganz und es kam wie es kam, beim ersten Zucken fing ich sofort an, die komplette Position klein zu hacken. Als ich raus war, ging es dann natürlich höher. 
+\end{warstory}
+
+
 \subsection{Aufbewahren lassen}
 Wenn man eine Position hat und es aber noch erstmal in die falsche Richtung gehen wird, dann löst man die Position auf und geht später wieder in die Position. Bei Kerdos hatten wir oft den Fehler gemacht, das wir uns oben haben zushaken lassen und dann unten noch einen großen Batzen genommen haben. Der großen Batzen brachte das Geld, die Stücke oben waren in der Regel kostenpflichtig. Es wäre besser gewesen, die Stücke oben vom Markt aufbewahren zu lassen. 
 
@@ -56,7 +138,26 @@ Wenn man den Schnittkurs senken will, dann nicht bloß aus dem Grund. Man muss d
 Wenn man kurz vom Auskotzen der Position ist, kauft man mit engem Stop nochmal die gleiche Size nach. Wichtig ist der enge Stop. 
 
 \subsection{Gewinner laufen lassen}
-Geld wird vor allem dann verdient, wenn man Gewinner möglichst lange laufen lässt. In Cosmos Holdings war ich damals dazu verdonnert die Position so lange laufen zu lassen, bis ein Stornorisiko ausgeschlossen war. Ich hatte bei 40 Cent gekauft und bei ungefähr 19 Dollar gegeben, statt wie sonst vermutlich bei 80 Cent. 
+Geld wird vor allem dann verdient, wenn man Gewinner möglichst lange laufen lässt. 
+
+
+\begin{warstory}{Gewinner laufen lassen und ver-200-fachen}{cosmos_health_war_story.jpg}
+In Cosmos Holdings gab es einen 25:1-Split. In der Vorbörse kam es dazu, dass jemand den Resplit scheinbar übersehen und seine Algorithmen dementsprechend einen falschen Referenzpreis hatten. Durch diese Konfiguration verkauften die Algos versehentlich alle ausstehenden Aktien leer (vielleicht sogar mehr, die genaue Zahl lässt sich nicht mehr rekonstruieren). Ich kaufte knapp 50k Aktien zu ungefähr 0.8\$ weil ich eine ähnliche Situation schon in Kanada verpasst hatte und deshalb wusste, dass solche Verwerfungen möglich sind. Anschließend kam aber das Anschlussproblem, dass ich die Stücke so tief unterm fairen Preis nicht wieder verkaufen konnte, da ich Gefahr laufen würde, dass die guten Käufe storniert und die schlechten Verkäufe stehen gelassen werden. Dadurch war ich gezwungen, die Stücke bis zur Entscheidung durch die Börse zu halten. Ursprünglich war geplant erst nach Ablauf der Stornofrist an der Nasdaq zu verkaufen, doch mein Chef entschied, dass es nach Rücksprache mit unserem Broker in den USA das Risiko wert sei, die Stücke ATC zu ca 23\$ zu verkaufen. Ich verdiente mit diesem Trade eine PNL von 1.2 Mio. €. Yahoo Finance beschrieb das ganze folgendermaßen:
+\\
+\textit{Cosmos Health, a healthcare company listed on Nasdaq, initiated a one-for-25 reverse stock split on December 16, along with a change in name from Cosmos Holdings. This meant that 25 shares in the company would be converted into one share.}
+
+\textit{``A processing error caused us to sell shares short into the market, and although it was detected quickly, it resulted in a loss of \$ 57 million as we bought back these shares against a rising stock price,`` CFO Jason Warnick said during Robinhood’s earnings call on Wednesday. He called the event an outlier, adding that the company had done everything to make sure it won’t happen again.}
+
+\begin{center}
+	\includegraphics[width=0.4\linewidth]{cosmos_pnl_anzeige}\\
+	\smallskip
+	\small Abbildung: PNL-Anzeige des Trades
+\end{center}
+
+
+\end{warstory}
+
+
 
 \section{Marktmikrostrukturen}
 \subsection{Risk-Spillover-Events}
@@ -95,6 +196,11 @@ Die Differenz zwischen dem Preis den man erwartet hat und dem Preis den man am E
 
 "On Oct. 20th we wuold normally have been out of our short Eurodollar position about 40 to 50 points highger, but the market opened 240 points higher that day. Richard Dennis in Market Wizards
 
+\subsection{Rauspisser}
+Nach starken Anstiegen sind viele Stücke in den Händen von Spekulanten, die darauf zocken, dass die Hausse noch höher geht. In solchen Marktphasen nimmt die Downside von Longs zu, weil Verkäufe schnell Stops und Trailing Stops auslösen und zu weiteren Verkäufen führen. Nicht-naive Käufer warten bis Welle vorbei ist und kaufen dann zu wenn die Stop-Loss-Welle vorbei ist.
+
+ 
+
 \section{Mentale Zustände beim Trading}
 \subsection{Wenn es schlecht läuft}
 
@@ -127,10 +233,33 @@ Die Leute, die als letztes aus maximaler Fomo auf den Zug aufspringen und versuc
 \subsection{sekundär}
 \subsubsection{Experten}
 Man darf immer nicht vergessen, dass jeder am Markt das macht, was er gut kann. Trader traden, Analysten analysieren und Experten liefern Expertise
+\subsubsection{Journalisten}
+Journalisten leben davon, dass sich Dinge am Markt ereignen, die Menschen dazu bringen, Artikel anzuklicken. Weil jeder nur eine bestimmte Menge an Eyeballs produzieren kann, ist es für Medien verlockend, Events zu pushen, die auch Nichthändler fesseln, wie zum Beispiel der Gamestop Squeeze.
 
 \section{Economics 101}
+\subsection{Der Markt hat immer Recht}
+Auch wenn der aktuelle Preis am Markt eventuell keinen Sinn zu machen scheint, hat der Markt Recht. Es macht als Fahrradfahrer keinen Sinn mit einem LKW um die Vorfahrt zu streiten. 
 \subsection{Künstlich niedrige Preise sorgen dafür, dass das Angebot kleiner wird.}
 Wenn man in Berlin die Mieten deckelt, dann werden weniger Wohnungen vermietet, weil es lukrativer ist, die Wohnungen erst zu vermieten, wenn der Mietendeckel gekippt wird als auf alten Mietverträgen sitzen zu bleiben. 
 \subsection{Langfristig printen sich Zentralbanken aus allen Problemen}
 Immer wenn man glaubt die Welt ist am Ende, kommt die Zentralbank und wandelt private Schulden in öffentliche. 
+\subsection{Der Zuteilungsfluch}
+Wenn man Zuteilung haben möchte, bekommt man sie nicht aber wenn man sie nicht möchte, dann bekommt man sie. 
+
+\section{Glossar}
+\subsubsection*{Arbitrage}
+Arbitrage im engeren (Professoren)-Sinn bedeutet, dass man das gleiche Gut zur gleichen Zeit an einem Handelsplatz kauft und einem anderen Verkauft und dabei eine positive PnL erzielt. Während auf einem vollständig effizienten Markt Arbitrage immer sicherer Profit ist, ist es auf einem ineffizienten Markt immer eine Prämie für die Übernahme des Settlementrisikos. 
+
+\subsubsection*{Settlement}
+Settlement ist die Erfüllung der Verpflichtungen, die mit einem Trade einhergehen.
+
+\section{Traders Quoted}
+\subsubsection*{Michael Marcus}
+Michael Phillips Marcus was a commodities trader who, in less than 20 years, is reputed to have turned his initial \$30{,}000 into \$80~million.
+
+\chapter*{Literaturverzeichnis}
+Schwager, Jack - Market Wizards
+
+
+
 \end{document}
