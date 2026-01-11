@@ -1,0 +1,19 @@
+\documentclass[ngerman,10pt,a4paper]{book}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\begin{document}
+\subsection{Objektorientiert Programmieren}
+
+\subsubsection{Innere und äußere Objekte}
+Das innere System weiß nicht, dass das äußere System existiert. Das innere System muss deshalb ohne das äußere System funktionieren. Informationen von Außen nach Innen werden immer von Außen gepusht, nicht von innen gepullt. Wenn $Aussen$ das äußere und $Innen$ das innere System ist und $get_info$ eine Methode von $Innen$ ist, dann gilt folgende Heuristik:
+\begin{verbatim}
+	Aussen.Inneres_Objekt.get_info(Aussen.requested_info) >> Inneres_Objekt.get_info(Aussen)
+\end{verbatim}
+
+
+\subsubsection{Immer durch Ergänzen hinzufügen, nicht durch Editieren}
+Wenn man so verändert, dass die bisherige Struktur nicht verändert wird, ist es deutlich leichter, als wenn man bestehendes ersetzt. 
+
+
+
+\end{document}
